@@ -1,9 +1,36 @@
 import { Instagram, Facebook, Twitter, Youtube, Mail } from "lucide-react";
 
 const cols = [
-  { title: "Shop", links: ["Rings", "Necklaces", "Earrings", "Bracelets", "Watches"] },
-  { title: "Company", links: ["About Us", "Craftsmanship", "Sustainability", "Press", "Careers"] },
-  { title: "Support", links: ["Contact", "Shipping", "Returns", "Size Guide", "FAQs"] },
+  {
+    title: "Shop",
+    links: [
+      { name: "Rings", hash: "#home" },
+      { name: "Necklaces", hash: "#home" },
+      { name: "Earrings", hash: "#home" },
+      { name: "Bracelets", hash: "#home" },
+      { name: "Watches", hash: "#home" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { name: "About Us", hash: "#about" },
+      { name: "Purity & Certification", hash: "#certification" },
+      { name: "Bespoke Jewelry", hash: "#custom" },
+      { name: "Gift Guide", hash: "#gift-guide" },
+      { name: "Jewelry Care", hash: "#care" },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      { name: "Book Consultation", hash: "#custom" },
+      { name: "Purity Check", hash: "#certification" },
+      { name: "Insured Shipping", hash: "#certification" },
+      { name: "Care Guide", hash: "#care" },
+      { name: "FAQs", hash: "#certification" },
+    ],
+  },
 ];
 
 export function Footer() {
@@ -30,7 +57,11 @@ export function Footer() {
               <h4 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-gold">{c.title}</h4>
               <ul className="flex flex-col gap-2">
                 {c.links.map((l) => (
-                  <li key={l}><a href="#" className="text-sm text-muted-foreground transition-colors hover:text-gold">{l}</a></li>
+                  <li key={l.name}>
+                    <a href={l.hash} className="text-sm text-muted-foreground transition-colors hover:text-gold">
+                      {l.name}
+                    </a>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -38,10 +69,10 @@ export function Footer() {
           <div>
             <h4 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-gold">Newsletter</h4>
             <p className="mb-3 text-sm text-muted-foreground">Get 10% off your first order plus early access to new drops.</p>
-            <form className="flex overflow-hidden rounded-full border border-border bg-background focus-within:border-gold">
+            <form className="flex overflow-hidden rounded-full border border-border bg-background focus-within:border-gold" onSubmit={(e) => e.preventDefault()}>
               <div className="grid place-items-center pl-4 text-muted-foreground"><Mail className="h-4 w-4" /></div>
               <input type="email" placeholder="your@email.com" className="flex-1 bg-transparent px-3 py-2.5 text-sm outline-none placeholder:text-muted-foreground" />
-              <button className="bg-gold-gradient px-5 text-xs font-bold text-onyx">Join</button>
+              <button type="submit" className="bg-gold-gradient px-5 text-xs font-bold text-onyx">Join</button>
             </form>
           </div>
         </div>
